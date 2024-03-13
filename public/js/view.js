@@ -23,3 +23,11 @@ for (let i = 0; i < viewFrm.length; i++) {
     const id = viewFrm[i].id;
     viewFrm[i].innerHTML += " " + board[id];
 }
+
+const modifyBtn = document.querySelector("#modify");
+
+const modifyBtnHandler = (e) => {
+    location = "/board/modify.html" + idx;
+}
+
+modifyBtn.addEventListener("click", modifyBtnHandler);
