@@ -46,14 +46,20 @@ const submitHandler = (e) => {
     e.preventDefault();
     const subject = e.target.subject.value;
     const writer = e.target.writer.value;
-    const contenr = e.target.content.value;
+    const content = e.target.content.value.trim(); // 수정: trim()을 사용하여 공백만 있는 경우 걸러냄
 
     try {
         // boards를 가져오기
-        const boardsObj = JSON.parse(localStorage.getItem("boards"));
+        let boardsObj = JSON.parse(localStorage.getItem("boards"));
 
         // 객체를 추가하기
-        const index = boardsObj.length;
+        let index = 0;
+        if (boardsObj) {
+            index = boardsObj.length > 0 ? boardsObj[boardsObj.length - 1].index + 1 : 0; // 수정: 마지막 게시물의 index + 1로 설정
+        } else {
+            boardsObj = [];
+        }
+
         const instance = new Board(index, subject, writer, content);
         boardsObj.push(instance);
 
