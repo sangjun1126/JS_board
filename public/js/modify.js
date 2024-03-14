@@ -45,4 +45,4 @@ const backBtnHandler = (e) => {
 };
 
 modifyFrm.addEventListener("submit", modifyHandler);
-backBtn.addEventListener("click", backBtnHandler);
+backBtn.addEventListener("click", backBtnHandler); // 이 줄에서 오류 발생
